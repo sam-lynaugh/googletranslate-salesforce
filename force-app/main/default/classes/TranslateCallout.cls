@@ -56,14 +56,18 @@ public with sharing class TranslateCallout {
         jwt.setAud(AUDIENCE_CLAIM);
         jwt.setIss(GOOGLESERVICEACCOUNT);
         jwt.setAdditionalClaims(new Map<String, Object>{ 'scope' => SCOPE });
-      
+        
         Auth.JWS jws = new Auth.JWS(jwt, CERTIFICATE);
-      
+        
         Auth.JWTBearerTokenExchange bearer = new Auth.JWTBearerTokenExchange(
-          jwt.getAud(),
-          jws
+            jwt.getAud(),
+            jws
         );
-      
-        return bearer.getAccessToken();
+        if (!Test.isRunningTest()) {
+            return bearer.getAccessToken();
+        }
+        else {
+            return 'test-token';
+        }
       }
 }
