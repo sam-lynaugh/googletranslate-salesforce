@@ -4,9 +4,9 @@ Invocable Apex that can be called from a Flow to detect and translate text using
 ## Overview
 This is a simple Apex class that sends an HTTP request to the Google Cloud Translation API that can be found here: https://cloud.google.com/translate/docs/reference/rest/v2/translate
 
-This was created to address a repeated problem I've seen in my time consulting in the public sector -- when serving a diverse user base, as is common in the public sector, often times data entered by external users is entered in a language that is not readable by the organization's internal users.
+This was created to address a repeated problem I've seen in my time consulting in the public sector -- when serving a diverse user base, as is common in the public sector, oftentimes data entered by external users is entered in a language that is not readable by the organization's internal users. By implementing this class with a record triggered flow on the troublesome data, you can save your users a small headache.
 
-This bulk of this class is an invokable method that is designed to be called from an asynchronous path of a record triggered flow, for easy configuration and implementation by Salesforce admins. See the below image for a basic example. 
+This bulk of this class is an invokable method that is designed to be called from an asynchronous path of a record triggered flow, for easy configuration and implementation by Salesforce admins. Trigger the flow however you see fit, call the action while passing it the appropriate parameters, receive the translation, and then do whatever database actions you need to do to store the translation (in the original field, in a different field, etc). See the below image for a basic example. 
 
 ![Screen Shot 2023-03-10 at 6 59 58 PM](https://user-images.githubusercontent.com/43337733/224455647-05fd0840-006b-4536-802b-db3c78218bcc.png) 
 
