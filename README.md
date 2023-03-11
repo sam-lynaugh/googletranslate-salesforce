@@ -16,3 +16,6 @@ Please note, if you do not want to call this method from an asynchronous path, y
 This class uses a Google API Service Account for authentication. Christian Szandor Knapp has an excellent tutorial here: https://www.salesforceben.com/google-api-and-service-accounts-get-up-and-running-in-30-minutes/
 
 Please note that in TranslateCallout.cls there are some variables that should instead be stored in custom metadata for production use.
+
+## Test Coverage
+I've also provided test coverage up to 96% for TranslateCallout.cls. Unfortunately, at the time of writing this, there is no actual supported way to provide real test coverage for the JWTBearerTokenExchange class (used here in the getAccessToken() method). As a result, in order to provide test coverage, an "interesting" use case of !Test.isRunningTest() is included in the getAccessToken() method.
