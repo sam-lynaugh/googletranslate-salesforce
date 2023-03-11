@@ -1,6 +1,6 @@
 public with sharing class TranslateCallout {
 
-    //For Production usage, store the following in Custom Metadata
+    //For Production usage, store the following variables in Custom Metadata
     private static final String CERTIFICATE = 'yourcertificate'; //the name of the jks certificate uplodaded in salesforce
     private static final String GOOGLESERVICEACCOUNT = 'your-service-account@your-project.iam.gserviceaccount.com'; //the name of your GCP service account
     private static final String AUDIENCE_CLAIM = 'https://www.googleapis.com/oauth2/v4/token';
@@ -35,20 +35,22 @@ public with sharing class TranslateCallout {
         //return (string) translations.get('translatedText');
     }
 
-    //class to allow you to input multiple parameters from flow
+    //input class to allow you to input multiple parameters from flow
     public class Input{
         @InvocableVariable
-        public String text; //The text to be translated
+        public String text; //The text to be translated, input via the Flow Builder UI
         
         @InvocableVariable
-        public String target; //ISO-639 code of language text is to be translated to
+        public String target; //ISO-639 code of language text is to be translated to, input via the Flow Builder UI
     }
 
+    //output class
     public class Output{
         @InvocableVariable
-        public String translatedText; //The text to be translated
+        public String translatedText; //The translated text to be returned to the flow
     }
 
+    //basic method to get authentication token
     private static String getAccessToken() {
         Auth.JWT jwt = new Auth.JWT();
         jwt.setAud(AUDIENCE_CLAIM);
